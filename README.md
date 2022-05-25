@@ -8,3 +8,6 @@ controller、service、serviceImpl、domain、mapper、xml
 
 ## 使用方法：
 修改GenerateDB类文件基本参数并运行即可
+
+## 未来开发计划
+1. 可视化窗口操作
