@@ -1,4 +1,4 @@
-package com.miaowu.generate;
+package org.miaomiao.generate;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.miaowu.generate.formatTools.underline2Camel;
+import static org.miaomiao.generate.formatTools.underline2Camel;
+
 
 public class GenerateDB {
 

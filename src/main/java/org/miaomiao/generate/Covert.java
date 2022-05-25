@@ -1,4 +1,4 @@
-package com.miaowu.generate;
+package org.miaomiao.generate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +16,8 @@ public class Covert {
         list.add(2L);
         list.add(3L);
         Long[] longs = list.toArray(new Long[0]);
-        for (int i = 0; i < longs.length; i++) {
-            System.out.println(longs[i]);
+        for (Long aLong : longs) {
+            System.out.println(aLong);
         }
     }
 }
