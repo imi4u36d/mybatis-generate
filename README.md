@@ -1,4 +1,7 @@
-# generate项目可以帮助你自动生成基于mybatis的基本增删改查代码
+# generate--帮你自动生成基于mybatis的基本增删改查
+
+## 支持平台：
+mac （windows开发中）
 
 ## 主要模块包含：
 controller、service、serviceImpl、domain、mapper、xml
