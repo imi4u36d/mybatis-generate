@@ -2,7 +2,7 @@ package org.miaomiao.generate;
 
 import org.springframework.util.StringUtils;
 
-public class formatTools {
+public class utils {
 
     public static void main(String[] args) {
         String user_name = underline2Camel("UserName", false);
@@ -13,23 +13,23 @@ public class formatTools {
     /**
      * 下划线转换为驼峰
      *
-     * @param line 下划线字符串
+     * @param line             下划线字符串
      * @param firstIsUpperCase 首字母是否转换为大写
      * @return
      */
     static String underline2Camel(String line, boolean... firstIsUpperCase) {
         String str = "";
 
-        if(!StringUtils.hasLength(line)){
+        if (!StringUtils.hasLength(line)) {
             return str;
         } else {
             StringBuilder sb = new StringBuilder();
-            String [] strArr;
+            String[] strArr;
             // 不包含下划线，且第二个参数是空的
-            if(!line.contains("_") && firstIsUpperCase.length == 0){
+            if (!line.contains("_") && firstIsUpperCase.length == 0) {
                 sb.append(line.substring(0, 1).toLowerCase()).append(line.substring(1));
                 str = sb.toString();
-            } else if (!line.contains("_") && firstIsUpperCase.length != 0){
+            } else if (!line.contains("_") && firstIsUpperCase.length != 0) {
                 if (!firstIsUpperCase[0]) {
                     sb.append(line.substring(0, 1).toLowerCase()).append(line.substring(1));
                     str = sb.toString();

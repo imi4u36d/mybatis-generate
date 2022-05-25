@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.miaomiao.generate.formatTools.underline2Camel;
+import static org.miaomiao.generate.utils.underline2Camel;
 
 
 public class GenerateDB {
@@ -55,8 +55,11 @@ public class GenerateDB {
 
     public static void main(String[] args) {
         createDir();
-        List<String> tableNames = getTableNames();
+        createFileByTable();
+    }
 
+    private static void createFileByTable() {
+        List<String> tableNames = getTableNames();
         tableNames.forEach(tableName -> {
             String domainName = underline2Camel(tableName, true);
             try {
@@ -124,7 +127,7 @@ public class GenerateDB {
             if (!CollectionUtils.isEmpty(TABLENAMES)) {
                 List<String> collect = new ArrayList<>();
                 TABLENAMES.forEach(tableName -> {
-                    if (tableNames.contains(tableName)){
+                    if (tableNames.contains(tableName)) {
                         collect.add(tableName);
                     }
                 });
@@ -265,7 +268,7 @@ public class GenerateDB {
                 } else {
                     LOGGER.warn(one.getName() + "文件目录未正常生成请检查");
                 }
-            }else {
+            } else {
                 LOGGER.warn("请先删除" + one.getName() + "目录再执行生成!");
             }
         });
@@ -279,7 +282,7 @@ public class GenerateDB {
         List<String> columnNames = getColumnNames(tableName);
 
 
-        File file = new File(BASEABSOLUTEXMLDIRECTORY + "/" + domainName + "Mapper.xml");
+        File file = new File(BASEABSOLUTEXMLDIRECTORY + File.separator + domainName + "Mapper.xml");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fileWriter);
         String baseStartFileBuilder = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
@@ -401,7 +404,7 @@ public class GenerateDB {
     private static void createJavaMapperFile(String packageURL, String domainName) throws IOException {
         String className = domainName + "Mapper";
         String domainNameStartByLowerCase = underline2Camel(domainName, false);
-        File file = new File(BASEABSOLUTEMAPPERDIRECTORY + "/" + domainName + "Mapper.java");
+        File file = new File(BASEABSOLUTEMAPPERDIRECTORY + File.separator + domainName + "Mapper.java");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fileWriter);
 
@@ -523,7 +526,7 @@ public class GenerateDB {
     private static void createJavaServiceImplFile(String packageURL, String domainName) throws IOException {
         String className = domainName + "ServiceImpl";
         String domainNameStartByLowerCase = underline2Camel(domainName, false);
-        File file = new File(BASEABSOLUTESERVICEIMPLDIRECTORY + "/" + domainName + "ServiceImpl.java");
+        File file = new File(BASEABSOLUTESERVICEIMPLDIRECTORY + File.separator + domainName + "ServiceImpl.java");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fileWriter);
 
@@ -685,7 +688,7 @@ public class GenerateDB {
     private static void createJavaServiceFile(String packageURL, String domainName) throws IOException {
         String className = domainName + "Service";
         String domainNameStartByLowerCase = underline2Camel(domainName, false);
-        File file = new File(BASEABSOLUTESERVICEDIRECTORY + "/" + domainName + "Service.java");
+        File file = new File(BASEABSOLUTESERVICEDIRECTORY + File.separator + domainName + "Service.java");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fileWriter);
 
@@ -806,7 +809,7 @@ public class GenerateDB {
     private static void createJavaControllerFile(String packageURL, String domainName) throws IOException {
         String className = domainName + "Controller";
         String domainNameStartByLowerCase = underline2Camel(domainName, false);
-        File file = new File(BASEABSOLUTECONTROLLERDIRECTORY + "/" + domainName + "Controller.java");
+        File file = new File(BASEABSOLUTECONTROLLERDIRECTORY + File.separator + domainName + "Controller.java");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fileWriter);
 
@@ -997,7 +1000,7 @@ public class GenerateDB {
         List<String> columnNames = getColumnNames(tableName);
 
         //创建 .java 文件
-        File file = new File(BASEABSOLUTEDOMAINDIRECTORY + "/" + className + ".java");
+        File file = new File(BASEABSOLUTEDOMAINDIRECTORY + File.separator + className + ".java");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fileWriter);
 
@@ -1091,6 +1094,4 @@ public class GenerateDB {
         //转文件保存
         bw.close();
     }
-
-
 }
