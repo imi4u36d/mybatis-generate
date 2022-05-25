@@ -25,8 +25,8 @@ public class GenerateDB {
 
     //    private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/miaomiao?useUnicode=true&characterEncoding=utf8&nullCatalogMeansCurrent=true";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "Wz.0323.";
+    private static final String USERNAME = "test";
+    private static final String PASSWORD = "test";
 
     /**
      * 是否指定表名称
