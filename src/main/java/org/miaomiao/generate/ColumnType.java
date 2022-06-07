@@ -5,17 +5,18 @@ import java.util.List;
 
 public enum ColumnType {
 
-    INT("Integer",""),
-    BIGINT("Long",""),
-    VARCHAR("String",""),
-    TEXT("String",""),
-    MEDIUMTEXT("String",""),
-    BINARY("byte[]",""),
-    LONGTEXT("String",""),
-    DATETIME("LocalDateTime","java.time.LocalDateTime"),
-    DATE("Date","java.sql.Date"),
-    TIME("TIME","java.sql.Time"),
-    TIMESTAMP("Timestamp","java.sql.Timestamp");
+    INT("Integer", ""),
+    BIGINT("Long", ""),
+    VARCHAR("String", ""),
+    TEXT("String", ""),
+    MEDIUMTEXT("String", ""),
+    BINARY("byte[]", ""),
+    LONGTEXT("String", ""),
+    DATETIME("LocalDateTime", "java.time.LocalDateTime"),
+    DATE("Date", "java.sql.Date"),
+    TIME("TIME", "java.sql.Time"),
+    TIMESTAMP("Timestamp", "java.sql.Timestamp"),
+    FLOAT("Float", "");
 
 
     private final String fieldType;
@@ -35,7 +36,7 @@ public enum ColumnType {
         return packageName;
     }
 
-    public static List<ColumnType> getColumnTypeList(){
+    public static List<ColumnType> getColumnTypeList() {
         return Arrays.asList(ColumnType.values());
     }
 }

@@ -26,7 +26,7 @@ public class GenerateDB {
     //    private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/miaomiao?useUnicode=true&characterEncoding=utf8&nullCatalogMeansCurrent=true";
     private static final String USERNAME = "test";
-    private static final String PASSWORD = "test";
+    private static final String PASSWORD = "test.";
 
     /**
      * 是否指定表名称
@@ -305,7 +305,7 @@ public class GenerateDB {
             String columnName = underline2Camel(propertyName, false);
             //字段
             xmlBuilder.append("        ");
-            xmlBuilder.append("<result property=\"").append(propertyName).append("\"   column=\"").append(columnName).append("\" />\n");
+            xmlBuilder.append("<result property=\"").append(columnName).append("\"   column=\"").append(propertyName).append("\" />\n");
         }
         xmlBuilder.append("    </resultMap>");
         xmlBuilder.append(System.getProperty("line.separator"));
