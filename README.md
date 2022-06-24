@@ -1,4 +1,5 @@
-# generate--帮你自动生成基于mybatis的基本增删改查
+# mybatis-generate
+# 懒人神器-帮你自动生成基于mybatis的基本增删改查
 
 ## 支持平台：
 mac windows linux
