@@ -1,4 +1,4 @@
-package org.miaomiao.generate;
+package org.miaomiao.generate.model;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,8 @@ public enum ColumnType {
     DATE("Date", "java.sql.Date"),
     TIME("TIME", "java.sql.Time"),
     TIMESTAMP("Timestamp", "java.sql.Timestamp"),
-    FLOAT("Float", "");
+    FLOAT("Float", ""),
+    BIT("Integer", "");
 
 
     private final String fieldType;

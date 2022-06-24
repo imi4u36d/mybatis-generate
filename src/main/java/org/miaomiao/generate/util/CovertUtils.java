@@ -1,14 +1,7 @@
-package org.miaomiao.generate;
+package org.miaomiao.generate.util;
 
-import org.springframework.util.StringUtils;
 
-public class utils {
-
-    public static void main(String[] args) {
-        String user_name = underline2Camel("UserName", false);
-        System.out.println(user_name);
-    }
-
+public class CovertUtils {
 
     /**
      * 下划线转换为驼峰
@@ -20,7 +13,7 @@ public class utils {
     static String underline2Camel(String line, boolean... firstIsUpperCase) {
         String str = "";
 
-        if (!StringUtils.hasLength(line)) {
+        if (line.isEmpty()) {
             return str;
         } else {
             StringBuilder sb = new StringBuilder();
