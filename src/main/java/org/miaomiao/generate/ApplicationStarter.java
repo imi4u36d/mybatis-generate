@@ -59,6 +59,7 @@ public class ApplicationStarter {
             tableInfoList.forEach((tableName, info) -> FreemarkerUtils.ftlToFile(info, fileType, savePath));
         });
 
+        //关闭连接-结束程序
         DBUtils.closeConnection();
 
     }
