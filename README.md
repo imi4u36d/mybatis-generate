@@ -8,7 +8,7 @@ mac windows linux
 controller、service、serviceImpl、domain、mapper、xml、(DTO开发中)
 
 ## 使用方法：
-修改GenerateDB类文件基本参数并运行即可
+修改ApplicationStarter基本参数并运行即可
 
 
 ## 未来开发计划

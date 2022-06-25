@@ -48,6 +48,7 @@ public class DBUtils {
         if (conn != null) {
             try {
                 conn.close();
+                logger.info("关闭数据库连接成功");
             } catch (SQLException e) {
                 logger.error("close connection failure", e);
             }

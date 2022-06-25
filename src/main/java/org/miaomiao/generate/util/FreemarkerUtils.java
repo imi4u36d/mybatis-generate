@@ -7,12 +7,15 @@ import freemarker.template.TemplateException;
 import org.miaomiao.generate.model.BaseResModel;
 import org.miaomiao.generate.model.BasicInfo;
 import org.miaomiao.generate.model.FileType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class FreemarkerUtils {
+    private static final Logger logger = LoggerFactory.getLogger(FreemarkerUtils.class);
 
     public static void ftlToFile(BasicInfo basicInfo, FileType fileType, String savePath) {
         if (fileType.equals(FileType.CONTROLLER)) {
@@ -21,12 +24,18 @@ public class FreemarkerUtils {
             createFile(basicInfo, savePath + File.separator + basicInfo.getEntityName() + ".java", "entity.ftl");
         } else if (fileType.equals(FileType.SERVICE)) {
             createFile(basicInfo, savePath + File.separator + basicInfo.getEntityName() + "Service.java", "service.ftl");
-        }else if (fileType.equals(FileType.IMPL)) {
+        } else if (fileType.equals(FileType.IMPL)) {
             createFile(basicInfo, savePath + File.separator + basicInfo.getEntityName() + "ServiceImpl.java", "impl.ftl");
-        }else if (fileType.equals(FileType.MAPPER)) {
+        } else if (fileType.equals(FileType.MAPPER)) {
             createFile(basicInfo, savePath + File.separator + basicInfo.getEntityName() + "Mapper.java", "mapper.ftl");
-        }else if (fileType.equals(FileType.XML)) {
+        } else if (fileType.equals(FileType.XML)) {
             createFile(basicInfo, savePath + File.separator + basicInfo.getEntityName() + "Mapper.xml", "xml.ftl");
+        } else if (fileType.equals(FileType.DTO)) {
+            createFile(basicInfo, savePath + File.separator + basicInfo.getEntityName() + "Dto.java", "dto.ftl");
+        } else if (fileType.equals(FileType.BASERESDTO)) {
+            createFile(basicInfo, savePath + File.separator + "BaseResponseDto.java", "baseResponseDto.ftl");
+        } else if (fileType.equals(FileType.RES)) {
+            createFile(basicInfo, savePath + File.separator + "Result.java", "result.ftl");
         }
     }
 
@@ -51,6 +60,7 @@ public class FreemarkerUtils {
             FileWriter out = new FileWriter(file);
             //
             template.process(basicInfo, out);
+            logger.info(ftlName.replace("ftl","")+ "文件生成完毕...");
         } catch (IOException | TemplateException e) {
             throw new RuntimeException(e);
         }

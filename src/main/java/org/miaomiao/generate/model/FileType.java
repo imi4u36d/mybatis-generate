@@ -7,5 +7,8 @@ public enum FileType {
     IMPL,
     MAPPER,
     XML,
+    DTO,
+    BASERESDTO,
+    RES,
 //    JSON;
 }
