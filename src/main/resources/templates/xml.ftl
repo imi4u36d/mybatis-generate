@@ -24,7 +24,6 @@
             </#list>
         </where>
         order by id desc
-        <if test="pageSize != null  and pageSize != '' and currentPage != null  and currentPage != ''"> limit <#noparse>#</#noparse>{pageSize * (currentPage-1)} , <#noparse>#</#noparse>{pageSize}</if>
     </select>
 
     <select id="totalSize" resultType="java.lang.Long">
@@ -75,16 +74,6 @@
             <#noparse>#</#noparse>{id}
         </foreach>
     </delete>
-
-    <select id="page" parameterType="${entityName}" resultMap="${entityName}Result">
-        <include refid="sel${entityStartByLowCase}Vo"/>
-        <where>
-            <#list columnInfos as col>
-                <if test="${entityStartByLowCase}.${col.javaName} != null  and ${entityStartByLowCase}.${col.javaName} != ''"> and ${col.columnName} = <#noparse>#</#noparse>{${entityStartByLowCase}.${col.javaName}}</if>
-            </#list>
-        </where>
-        limit <#noparse>#</#noparse>{page},<#noparse>#</#noparse>{pageSize}
-    </select>
 
     <select id="total" parameterType="${entityName}" resultType="Integer">
         select count(*) from ${tableName}

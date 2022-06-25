@@ -1,5 +1,7 @@
 package ${packageUrl};
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import ${entityUrl}.${entityName};
 import ${mapperUrl}.${entityName}Mapper;
 import ${serviceUrl}.${entityName}Service;
@@ -94,11 +96,13 @@ public class ${entityName}ServiceImpl implements ${entityName}Service {
     *
     * @return 使用对象进行筛选后分页
     */
-    public List<${entityName}> page(${entityName} ${entityStartByLowCase}, int page, int pageSize) {
+    public PageInfo<${entityName}> page(${entityName} ${entityStartByLowCase}, int pageNum, int pageSize) {
         if (ObjectUtils.isEmpty(${entityStartByLowCase})) {
         ${entityStartByLowCase} = new ${entityName}();
         }
-        return ${entityStartByLowCase}Mapper.page(${entityStartByLowCase}, page, pageSize);
+        PageHelper.startPage(pageNum, pageSize);
+        List<${entityName}> list = ${entityStartByLowCase}Mapper.list(${entityStartByLowCase});
+        return new PageInfo<>(list);
     }
 
     /**

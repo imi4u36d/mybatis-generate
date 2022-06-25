@@ -1,7 +1,7 @@
 package ${packageUrl};
 
 
-
+import com.github.pagehelper.PageInfo;
 import ${entityUrl}.${entityName};
 
 import java.util.List;
@@ -68,7 +68,7 @@ public interface ${entityName}Service {
     *
     * @return 使用对象进行筛选后分页
     */
-    List<${entityName}> page(${entityName} ${entityStartByLowCase}, int page, int pageSize);
+    PageInfo<${entityName}> page(${entityName} ${entityStartByLowCase}, int pageNum, int pageSize);
 
     /**
     * 数据总条数

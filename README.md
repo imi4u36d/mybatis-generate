@@ -21,8 +21,30 @@ mac windows linux
 2. 统一模块返回
 
 ## 使用方法：
-修改ApplicationStarter基本参数并运行即可
+修改ApplicationStarter基本参数并运行即可。
 
+你可能需要下面的配置来正确使用PageHelper分页插件
+
+1.pom 文件中配置如下
+```
+<dependency>
+<groupId>com.github.pagehelper</groupId>
+<artifactId>pagehelper-spring-boot-starter</artifactId>
+<version>1.4.2</version> //
+</dependency>
+<!-- 为保证兼容性，请使用适配你springBoot版本的PageHelper版本 -->
+```
+2. 在yaml文件中配置
+```
+#pagehelper分页插件配置
+pagehelper:
+helperDialect: mysql
+reasonable: true
+supportMethodsArguments: true
+params: count=countSql
+```
+3. 在ApplicationStarter启动类中修改你的数据库、包、等信息
+4. 执行main方法🍺
 
 ## 未来开发计划
 1. DTO封装 ✅
@@ -33,6 +55,6 @@ mac windows linux
 
 
 ## 可能采用的方案
-1. 分页使用分页框架
+1. 分页使用分页框架 ✅
 2. 脚手架自动生成
 3. IDEA插件封装

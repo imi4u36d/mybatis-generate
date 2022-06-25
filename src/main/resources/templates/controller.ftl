@@ -1,6 +1,7 @@
 package ${packageUrl};
 
 
+import com.github.pagehelper.PageInfo;
 import ${entityUrl}.${entityName};
 import ${dtoUrl}.BaseResponseDto;
 import ${dtoUrl}.${entityName}Dto;
@@ -14,9 +15,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiOperation;
 </#if>
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -140,17 +139,10 @@ public class ${entityName}Controller {
     <#if swaggerEnable == true>
     @ApiOperation("分页列表查询")
     </#if>
-    @PostMapping("/list/{page}/{pageSize}")
-    public BaseResponseDto<Map<String, Object>> page(@RequestBody @Nullable ${entityName} ${entityStartByLowCase},<#if swaggerEnable == true>@ApiParam(name = "page", value = "页码")</#if> @PathVariable int page,<#if swaggerEnable == true>@ApiParam(name = "pageSize", value = "每页数量")</#if> @PathVariable int pageSize) {
-        Integer total = ${entityStartByLowCase}Service.total(${entityStartByLowCase});
-        List<${entityName}> contentList = ${entityStartByLowCase}Service.page(${entityStartByLowCase}, page, pageSize);
-        Map<String, Object> resMap = new HashMap<>();
-        resMap.put("totalEle", total);
-        resMap.put("content", contentList);
-        resMap.put("curSize", contentList.size());
-        resMap.put("page", page);
-        resMap.put("pageSize", pageSize);
-        return Result.success("查询成功",resMap);
+    @PostMapping("/page/{pageNum}/{pageSize}")
+    public BaseResponseDto<PageInfo<${entityName}>> page(@RequestBody @Nullable ${entityName} ${entityStartByLowCase},<#if swaggerEnable == true>@ApiParam(name = "pageNum", value = "页码")</#if> @PathVariable int pageNum, <#if swaggerEnable == true>@ApiParam(name = "pageSize", value = "每页数量")</#if> @PathVariable int pageSize) {
+        PageInfo<${entityName}> page = ${entityStartByLowCase}Service.page(${entityStartByLowCase}, pageNum, pageSize);
+        return Result.success("查询成功", page);
     }
 
 }
