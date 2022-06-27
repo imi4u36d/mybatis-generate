@@ -16,6 +16,7 @@ public class CovertUtils {
         if (line.isEmpty()) {
             return str;
         } else {
+            line = line.toLowerCase();
             StringBuilder sb = new StringBuilder();
             String[] strArr;
             // 不包含下划线，且第二个参数是空的
