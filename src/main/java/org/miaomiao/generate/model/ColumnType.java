@@ -17,7 +17,8 @@ public enum ColumnType {
     TIME("TIME", "java.sql.Time"),
     TIMESTAMP("Timestamp", "java.sql.Timestamp"),
     FLOAT("Float", ""),
-    BIT("Integer", "");
+    BIT("Integer", ""),
+    TINYINT("Integer", "");
 
 
     private final String fieldType;
